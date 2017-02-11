@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+</head>
+<body>
+
+<style type="text/css">
+	span {
+		color:red;
+		font-size: 35px;
+	}
+	#doStuffHere {
+		text-align: center;
+		font-size: 30px;
+	}
+</style>
+
+<div id="doStuffHere">
+
+<h1>Swap The Line</h1>
+
+<p>Line Verb: <input data-bind="value: verb" /></p>
+<p>Line Noun: <input data-bind="value: object" /></p>
+
+	<p>[Verse 1]<br>
+This was never the way I planned <br>
+Not my intention<br>
+I got so brave, drink in hand<br>
+Lost my discretion<br>
+It's not what I'm used to<br>
+Just want to try you on<br>
+I'm curious for you<br>
+Caught my attention<br>
+<br>
+[Chorus]
+<br>
+I <span data-bind="text: verb"></span> a <span data-bind="text: object"></span> and I liked it
+The taste of her cherry chapstick<br>
+I <span data-bind="text: verb"></span> a <span data-bind="text: object"></span> just to try it
+I hope my boyfriend don't mind it<br>
+It felt so wrong, it felt so right<br>
+Don't mean I'm in love tonight<br>
+I <span data-bind="text: verb"></span> a <span data-bind="text: object"></span> and I liked it
+(I liked it)<br>
+<br>
+[Verse 2]
+<br>
+No, I don't even know your name<br>
+It doesn't matter<br>
+You're my experimental game<br>
+Just human nature<br>
+It's not what good girls do<br>
+Not how they should behave<br>
+My head gets so confused<br>
+Hard to obey
+<br>
+[Chorus]
+<br>
+I <span data-bind="text: verb"></span> a <span data-bind="text: object"></span> and I liked it
+The taste of her cherry chapstick<br>
+I <span data-bind="text: verb"></span> a <span data-bind="text: object"></span> just to try it
+I hope my boyfriend don't mind it<br>
+It felt so wrong, it felt so right<br>
+Don't mean I'm in love tonight<br>
+I <span data-bind="text: verbOutput"></span> a <span data-bind="text: object"></span> and I liked it
+(I liked it)<br>
+<br>
+[Bridge]
+<br>
+Us girls we are so magical<br>
+Soft skin, red lips, so kissable<br>
+Hard to resist so touchable<br>
+Too good to deny it<br>
+Ain't no big deal, it's innocent<br>
+<br>
+[Chorus]
+<br>
+I <span data-bind="text: verb"></span> a <span data-bind="text: object"></span> and I liked it
+The taste of her cherry chapstick<br>
+I <span data-bind="text: verb"></span> a <span data-bind="text: object"></span> just to try it
+I hope my boyfriend don't mind it<br>
+It felt so wrong, it felt so right<br>
+Don't mean I'm in love tonight<br>
+I <span data-bind="text: verb"></span> a <span data-bind="text: object"></span> and I liked it
+(I liked it)</p>
+	
+
+</div>
+
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
+<script type="text/javascript">
+	// Here's my data model
+	var ViewModel = function() {
+	    this.verb = ko.observable('kissed');
+	    this.object = ko.observable('girl')
+	   
+	 
+	    this.verbOutput = ko.pureComputed(function() {
+	        // Knockout tracks dependencies automatically. It knows that fullName depends on firstName and lastName, because these get called when evaluating fullName.
+	        return this.verb() + "hello"
+	}, this);
+	    this.objectOutput = ko.pureComputed(function() {
+	        // Knockout tracks dependencies automatically. It knows that fullName depends on firstName and lastName, because these get called when evaluating fullName.
+	        return this.object() + "hello"
+	}, this);
+	};
+	var viewModelObject = new ViewModel();
+	ko.applyBindings(viewModelObject, document.querySelector('#doStuffHere'));
+
+</script>
+</body>
+</html>
